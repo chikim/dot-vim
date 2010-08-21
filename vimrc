@@ -24,7 +24,11 @@ set showmatch
 set wildmenu
 set wildmode=longest,list,full
 
-" filetype-specific indenting and plugins
+" pathogen
+call pathogen#runtime_append_all_bundles()
+
+" filetype-specific indenting and plugins (off initiall to force reload)
+filetype off
 filetype plugin indent on
 
 " indent 4
