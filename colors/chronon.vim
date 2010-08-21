@@ -1,7 +1,7 @@
 " Vim colorscheme
 " Maintainer: Gregory Gaskill <gregory@chronon.com>
-" Last Change: 2010-08-18
-" Version: 0.4
+" Last Change: 2010-08-21
+" Version: 0.5
 
 set background=dark
 hi clear
@@ -11,7 +11,7 @@ endif
 let g:colors_name = "chronon"
 
 " GUI
-hi Cursor                 guifg=#ffffff guibg=#339999
+hi Cursor                 guifg=#000000 guibg=#F8F8F0
 hi NonText                guifg=#6080c0 guibg=#062636
 hi Normal                 guifg=#dddddd guibg=#103040
 hi LineNr                 guifg=#999999 guibg=#062636
@@ -25,6 +25,7 @@ hi WildMenu               guifg=#000000 guibg=#99ffff gui=bold
 hi PMenu                  guifg=#ffffff guibg=#336699
 hi PMenuSel               guifg=#eeeeee guibg=#003366
 hi Question               guifg=#009900
+hi MatchParen             guifg=#000000 guibg=#FD971F gui=bold
 
 " cursorline
 highlight CursorLine      guibg=#003853
@@ -42,7 +43,8 @@ hi Type                   guifg=#60ff60 gui=none
 hi StorageClass           guifg=#6699cc
 hi Structure              guifg=#cc99cc
 
-hi Special                guifg=#ff9933
+hi Special                guifg=#ff9933 gui=bold
+hi Delimiter              guifg=#ff9933 gui=none
 
 " PHP specific
 hi phpDefineClassName     guifg=#009900

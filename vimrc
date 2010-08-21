@@ -55,22 +55,22 @@ set hlsearch
 
 
 " bye-bye eols
-:autocmd BufWritePre *.php setlocal binary
-:autocmd BufWritePre *.php setlocal noeol
-:autocmd BufWritePost *.php setlocal nobinary
+au BufWritePre *.php setlocal binary
+au BufWritePre *.php setlocal noeol
+au BufWritePost *.php setlocal nobinary
 
 " highlight long lines (soft limit: 80, hard limit: 100)
-:au BufWinEnter *.php,*.py let w:m1=matchadd('Search', '\%<101v.\%>80v', -1)
-:au BufWinEnter *.php,*.py let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
+au BufWinEnter *.php let w:m1=matchadd('Search', '\%<101v.\%>80v', -1)
+au BufWinEnter *.php let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 
-" highlight trailing whitespace
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+" highlight trailing whitespace for .php and .css files
+au InsertEnter *.php,*.css match ExtraWhitespace /\s\+\%#\@<!$/
+au BufRead,InsertLeave *.php,*.css match ExtraWhitespace /\s\+$/
 hi ExtraWhitespace ctermbg=red guibg=#990000
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#990000
+au ColorScheme *.php,*.css highlight ExtraWhitespace ctermbg=red guibg=#990000
 
-" bye-bye trailing whitespaces from lines
-autocmd FileType php,css autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+" bye-bye trailing whitespaces from .php and .css files
+au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 " grep.vim plugin
 let Grep_Skip_Dirs = 'tmp .git'
@@ -84,15 +84,15 @@ let g:CommandTMaxHeight=25
 runtime! statusbar.vim
 
 " language specific omnifunctions
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType vim set omnifunc=syntaxcomplete#Complete
+au FileType php set omnifunc=phpcomplete#CompletePHP
+au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+au FileType html set omnifunc=htmlcomplete#CompleteTags
+au FileType css set omnifunc=csscomplete#CompleteCSS
+au FileType xml set omnifunc=xmlcomplete#CompleteTags
+au FileType vim set omnifunc=syntaxcomplete#Complete
 
 " markdown
-autocmd BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n:&gt;
+au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n:&gt;
 
 " PHP parser check (CTRL-L)
 :autocmd FileType php noremap <C-L> :!php -l %<CR>
