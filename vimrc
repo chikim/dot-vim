@@ -84,12 +84,15 @@ let g:CommandTMaxHeight=25
 runtime! statusbar.vim
 
 " language specific omnifunctions
-au FileType php set omnifunc=phpcomplete#CompletePHP
+au FileType php,ctp set omnifunc=phpcomplete#CompletePHP
 au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-au FileType html set omnifunc=htmlcomplete#CompleteTags
+au FileType html,ctp set omnifunc=htmlcomplete#CompleteTags
 au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType xml set omnifunc=xmlcomplete#CompleteTags
 au FileType vim set omnifunc=syntaxcomplete#Complete
+
+" cakephp snippets
+"au FileType php set ft=php.cakephp
 
 " markdown
 au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n:&gt;
