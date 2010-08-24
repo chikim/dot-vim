@@ -15,7 +15,8 @@ hi Cursor                 guifg=#000000 guibg=#F8F8F0
 hi NonText                guifg=#6080c0 guibg=#062636
 hi Normal                 guifg=#dddddd guibg=#103040
 hi LineNr                 guifg=#999999 guibg=#062636
-hi StatusLine             guifg=#000000 guibg=#999999 gui=bold
+"hi StatusLine             guifg=#ffffff guibg=#006600 gui=bold
+hi StatusLine             guifg=#dddddd guibg=#006666 gui=bold
 hi StatusLineNC           guifg=#333333 guibg=#666666
 hi ErrorMsg               guifg=#eeeeee guibg=#990000
 hi Visual                 guifg=#336699 guibg=#ffffff gui=reverse

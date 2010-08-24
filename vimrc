@@ -53,7 +53,6 @@ set backspace=indent,eol,start
 set cmdheight=2
 set hlsearch
 
-
 " bye-bye eols
 au BufWritePre *.php setlocal binary
 au BufWritePre *.php setlocal noeol
@@ -80,8 +79,23 @@ let Grep_Xargs_Path = '/opt/local/bin/gxargs'
 " Command-T plugin
 let g:CommandTMaxHeight=25
 
+" taglist.vim 
+let Tlist_Use_Right_Window = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Enable_Fold_Column = 0
+let Tlist_File_Fold_Auto_Close = 1
+
+" SuperTab continued
+"let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+
 " status bar format
 runtime! statusbar.vim
+
+" don't show the complete menu preview, default is completeopt=menu,preview
+set completeopt=menu
 
 " language specific omnifunctions
 au FileType php,ctp set omnifunc=phpcomplete#CompletePHP
@@ -101,6 +115,7 @@ au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n
 :autocmd FileType php noremap <C-L> :!php -l %<CR>
 
 map <Leader>, :NERDTreeToggle<cr>
+map <Leader>. :TlistToggle<cr>
 
 " recursive search for word under cursor
 " silent!grep -R chronon *
@@ -111,5 +126,11 @@ map <Leader>g :noautocmd execute "vimgrep /" . expand("<cword>") . "/j **" <Bar>
 " turn off search highlighting
 map <silent> <leader>nh :nohls <CR>
 
+" turn off php long line highlighting 
+map <leader>nhl :hi Search guibg=NONE guifg=NONE<CR>
+
 " manually trim all trailing whitespace
 map <Leader>tws :%s/\s\+$//<CR>
+
+" set filetype to php.cakephp
+map <Leader>cphp :set filetype=php.cakephp <CR>
