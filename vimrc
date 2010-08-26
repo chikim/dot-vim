@@ -127,7 +127,7 @@ map <Leader>g :noautocmd execute "vimgrep /" . expand("<cword>") . "/j **" <Bar>
 map <silent> <leader>nh :nohls <CR>
 
 " turn off php long line highlighting 
-map <leader>nhl :hi Search guibg=NONE guifg=NONE<CR>
+map <leader>nhl :hi Search guibg=NONE guifg=NONE\| :hi ErrorMsg guibg=NONE guifg=NONE<CR>
 
 " manually trim all trailing whitespace
 map <Leader>tws :%s/\s\+$//<CR>
