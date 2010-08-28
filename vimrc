@@ -19,6 +19,7 @@ set incsearch
 
 " highlight matching parens
 set showmatch
+set matchtime=2
 
 " tab complete menu
 set wildmenu
@@ -26,6 +27,7 @@ set wildmode=longest,list,full
 
 " pathogen
 call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
 
 " filetype-specific indenting and plugins (off initiall to force reload)
 filetype off
@@ -62,7 +64,7 @@ au BufWritePost *.php setlocal nobinary
 au BufWinEnter *.php let w:m1=matchadd('Search', '\%<101v.\%>80v', -1)
 au BufWinEnter *.php let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 
-" highlight trailing whitespace for .php and .css files
+"" highlight trailing whitespace for .php and .css files
 au InsertEnter *.php,*.css match ExtraWhitespace /\s\+\%#\@<!$/
 au BufRead,InsertLeave *.php,*.css match ExtraWhitespace /\s\+$/
 hi ExtraWhitespace ctermbg=red guibg=#990000
@@ -134,3 +136,8 @@ map <Leader>tws :%s/\s\+$//<CR>
 
 " set filetype to php.cakephp
 map <Leader>cphp :set filetype=php.cakephp <CR>
+
+" move visual selected blocks more then once
+vnoremap < <gv
+vnoremap > >gv
+

@@ -11,8 +11,8 @@ endif
 let g:colors_name = "chronon"
 
 " GUI
-hi Cursor                 guifg=#000000 guibg=#F8F8F0
-hi NonText                guifg=#6080c0 guibg=#062636
+hi Cursor                 guifg=#000000 guibg=#cccccc
+hi NonText                guibg=#062636
 hi Normal                 guifg=#dddddd guibg=#103040
 hi LineNr                 guifg=#999999 guibg=#062636
 "hi StatusLine             guifg=#ffffff guibg=#006600 gui=bold
@@ -26,7 +26,7 @@ hi WildMenu               guifg=#000000 guibg=#99ffff gui=bold
 hi PMenu                  guifg=#ffffff guibg=#336699
 hi PMenuSel               guifg=#eeeeee guibg=#003366
 hi Question               guifg=#009900
-hi MatchParen             guifg=#000000 guibg=#FD971F gui=bold
+hi MatchParen             guifg=NONE guibg=#003366 gui=bold
 
 " cursorline
 highlight CursorLine      guibg=#003853

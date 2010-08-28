@@ -8,6 +8,10 @@ winpos 0 878
 set co=166
 set lines=64
 
+" smaller or bigger?
+map <Leader>-- :set co=110<CR>
+map <Leader>--- :set co=166<CR>
+
 " no toolbar and menus.
 set guioptions-=T
 set guioptions-=m
