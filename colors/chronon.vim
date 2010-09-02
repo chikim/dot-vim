@@ -27,6 +27,7 @@ hi PMenu                  guifg=#ffffff guibg=#336699
 hi PMenuSel               guifg=#eeeeee guibg=#003366
 hi Question               guifg=#009900
 hi MatchParen             guifg=NONE guibg=#003366 gui=bold
+hi Folded                 guifg=#cccccc guibg=#663300
 
 " cursorline
 highlight CursorLine      guibg=#003853
