@@ -74,9 +74,9 @@ au ColorScheme *.php,*.css highlight ExtraWhitespace ctermbg=red guibg=#990000
 au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 " grep.vim plugin
-let Grep_Skip_Dirs = 'tmp .git'
-let Grep_Skip_Files = '.git*'
-let Grep_Xargs_Path = '/opt/local/bin/gxargs'
+"let Grep_Skip_Dirs = 'tmp .git'
+"let Grep_Skip_Files = '.git*'
+"let Grep_Xargs_Path = '/opt/local/bin/gxargs'
 
 " Command-T plugin
 let g:CommandTMaxHeight=25
@@ -115,6 +115,7 @@ au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n
 
 " PHP parser check (CTRL-L)
 :autocmd FileType php noremap <C-L> :!php -l %<CR>
+map <Leader>w :w\| !php -l %<CR>
 
 map <Leader>, :NERDTreeToggle<cr>
 map <Leader>. :TlistToggle<cr>
