@@ -87,6 +87,9 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_Enable_Fold_Column = 0
 let Tlist_File_Fold_Auto_Close = 1
 
+" syntastic
+let g:syntastic_auto_loc_list=1
+
 " SuperTab continued
 "let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"

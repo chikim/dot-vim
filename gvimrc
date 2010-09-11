@@ -5,7 +5,7 @@ colorscheme chronon
 winpos 0 878
 
 " size
-set co=166
+set co=138
 set lines=64
 
 " smaller or bigger?
