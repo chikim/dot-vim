@@ -21,6 +21,12 @@ set statusline+=%h%m%r%w                     " flags
 set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
 set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
 set statusline+=%{&fileformat}]              " file format
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 set statusline+=%=                           " right align
 set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ \   " highlight
 set statusline+=%-14.(%l\ of\ %L,\ col:\ %c%V%)\ %<%P        " offset

@@ -88,7 +88,9 @@ let Tlist_Enable_Fold_Column = 0
 let Tlist_File_Fold_Auto_Close = 1
 
 " syntastic
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=0
+let g:syntastic_enable_signs=1
+let g:syntastic_disabled_filetypes = ['html']
 
 " SuperTab continued
 "let g:SuperTabDefaultCompletionType = "context"
@@ -110,11 +112,12 @@ au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType xml set omnifunc=xmlcomplete#CompleteTags
 au FileType vim set omnifunc=syntaxcomplete#Complete
 
+
 " cakephp snippets
 "au FileType php set ft=php.cakephp
 
 " markdown
-au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n:&gt;
+au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n:&gt; linebreak
 
 " PHP parser check (CTRL-L)
 :autocmd FileType php noremap <C-L> :!php -l %<CR>
@@ -133,13 +136,18 @@ map <Leader>g :noautocmd execute "vimgrep /" . expand("<cword>") . "/j **" <Bar>
 map <silent> <leader>nh :nohls <CR>
 
 " turn off php long line highlighting 
-map <leader>nhl :hi Search guibg=NONE guifg=NONE\| :hi ErrorMsg guibg=NONE guifg=NONE<CR>
+"map <leader>nhl :hi Search guibg=NONE guifg=NONE\| :hi ErrorMsg guibg=NONE guifg=NONE<CR>
+map <leader>nhl :hi ErrorMsg guibg=NONE guifg=NONE<CR>
 
 " manually trim all trailing whitespace
 map <Leader>tws :%s/\s\+$//<CR>
 
 " set filetype to php.cakephp
 map <Leader>cphp :set filetype=php.cakephp <CR>
+
+" Command-T mapping changes (enter to open in new tab, ctrl-t for current
+let g:CommandTAcceptSelectionMap='<C-t>'
+let g:CommandTAcceptSelectionTabMap='<CR>'
 
 " move visual selected blocks more then once
 vnoremap < <gv

@@ -58,6 +58,10 @@ hi phpSpecialFunction     guifg=#ff6600
 " CSS specific
 hi cssClassName           guifg=#66cc66
 
+" Markdown specific
+hi markdownBold           guifg=#996633 gui=bold
+hi markdownListMarker     guifg=#993333 gui=bold
+
 "Comment
 
 "Constant

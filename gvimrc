@@ -35,3 +35,5 @@ if has("gui_macvim")
     map <D-t> :CommandT<CR>
     "set transp=1
 endif
+
+au FileType markdown set co=110
