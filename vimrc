@@ -73,6 +73,8 @@ au ColorScheme *.php,*.css highlight ExtraWhitespace ctermbg=red guibg=#990000
 " bye-bye trailing whitespaces from .php and .css files
 au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
+autocmd BufRead,BufNewFile *.ctp set filetype=php.cakephp
+
 " grep.vim plugin
 "let Grep_Skip_Dirs = 'tmp .git'
 "let Grep_Skip_Files = '.git*'
@@ -142,8 +144,11 @@ map <leader>nhl :hi ErrorMsg guibg=NONE guifg=NONE<CR>
 " manually trim all trailing whitespace
 map <Leader>tws :%s/\s\+$//<CR>
 
-" set filetype to php.cakephp
-map <Leader>cphp :set filetype=php.cakephp <CR>
+" set filetypes
+map <Leader>cake :set filetype=php.cakephp <CR>
+map <Leader>xx :set filetype=xml <CR>
+map <Leader>hh :set filetype=html <CR>
+map <Leader>pp :set filetype=php <CR>
 
 " Command-T mapping changes (enter to open in new tab, ctrl-t for current
 let g:CommandTAcceptSelectionMap='<C-t>'
