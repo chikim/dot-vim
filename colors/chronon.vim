@@ -1,6 +1,6 @@
 " Vim colorscheme
 " Maintainer: Gregory Gaskill <gregory@chronon.com>
-" Last Change: 2010-08-21
+" Last Change: 2010-10-25
 " Version: 0.5
 
 set background=dark
@@ -31,6 +31,9 @@ hi Folded                 guifg=#cccccc guibg=#663300
 
 " cursorline
 highlight CursorLine      guibg=#003853
+
+" ColorColumn
+highlight ColorColumn guibg=#103246
 
 " syntax
 hi Identifier             guifg=#00ffff

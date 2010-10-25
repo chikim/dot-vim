@@ -61,8 +61,8 @@ au BufWritePre *.php setlocal noeol
 au BufWritePost *.php setlocal nobinary
 
 " highlight long lines (soft limit: 80, hard limit: 100)
-au BufWinEnter *.php let w:m1=matchadd('Search', '\%<101v.\%>80v', -1)
-au BufWinEnter *.php let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
+"au BufWinEnter *.php let w:m1=matchadd('Search', '\%<101v.\%>80v', -1)
+"au BufWinEnter *.php let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 
 "" highlight trailing whitespace for .php and .css files
 au InsertEnter *.php,*.css match ExtraWhitespace /\s\+\%#\@<!$/
@@ -73,7 +73,7 @@ au ColorScheme *.php,*.css highlight ExtraWhitespace ctermbg=red guibg=#990000
 " bye-bye trailing whitespaces from .php and .css files
 au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
-autocmd BufRead,BufNewFile *.ctp set filetype=php.cakephp
+autocmd BufRead,BufNewFile *.ctp set filetype=php
 
 " grep.vim plugin
 "let Grep_Skip_Dirs = 'tmp .git'
@@ -84,10 +84,10 @@ autocmd BufRead,BufNewFile *.ctp set filetype=php.cakephp
 let g:CommandTMaxHeight=25
 
 " taglist.vim 
-let Tlist_Use_Right_Window = 1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Enable_Fold_Column = 0
-let Tlist_File_Fold_Auto_Close = 1
+"let Tlist_Use_Right_Window = 1
+"let Tlist_Exit_OnlyWindow = 1
+"let Tlist_Enable_Fold_Column = 0
+"let Tlist_File_Fold_Auto_Close = 1
 
 " syntastic
 let g:syntastic_auto_loc_list=0

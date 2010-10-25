@@ -5,12 +5,15 @@ colorscheme chronon
 winpos 0 878
 
 " size
-set co=138
+set co=124
 set lines=64
 
 " smaller or bigger?
 map <Leader>-- :set co=110<CR>
 map <Leader>--- :set co=166<CR>
+
+" hilight column widths
+set colorcolumn="81,101"
 
 " no toolbar and menus.
 set guioptions-=T
