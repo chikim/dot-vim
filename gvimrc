@@ -25,7 +25,9 @@ set guioptions-=rL
 " show tabbar
 set showtabline=2
 
-"set cursorline
+set cursorline
+set ttyfast
+set relativenumber
 " set mousefocus
 
 " cycle though tabs with Ctrl-Tab

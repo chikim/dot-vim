@@ -8,6 +8,9 @@ set nocompatible
 syntax on
 set nobackup
 
+set ruler
+set scrolloff=3
+
 " no bells
 set vb t_vb=
 
@@ -25,12 +28,10 @@ set matchtime=2
 set wildmenu
 set wildmode=longest,list,full
 
+filetype off
 " pathogen
 call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags()
-
-" filetype-specific indenting and plugins (off initiall to force reload)
-filetype off
 filetype plugin indent on
 
 " indent 4
@@ -40,6 +41,13 @@ set softtabstop=4
 set shiftwidth=4
 
 set autoindent
+
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+
+" save on losing focus
+au FocusLost * :wa
 
 " always show the status bar and line nums
 set laststatus=2
