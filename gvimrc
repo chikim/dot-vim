@@ -13,7 +13,7 @@ map <Leader>-- :set co=110<CR>
 map <Leader>--- :set co=166<CR>
 
 " hilight column widths
-set colorcolumn="81,101"
+set colorcolumn=81,101
 
 " no toolbar and menus.
 set guioptions-=T
