@@ -44,14 +44,21 @@ set autoindent
 
 set wrap
 set textwidth=79
-set formatoptions=qrn1
+set formatoptions=qrnoc
+
+set ttyfast
 
 " save on losing focus
 au FocusLost * :wa
 
-" always show the status bar and line nums
+" always show the status bar
 set laststatus=2
-set number
+
+if has("gui_macvim")
+    set relativenumber
+else
+    set number
+endif
 
 " auto read when a file is changed from elsewhere
 set autoread
@@ -127,7 +134,7 @@ au FileType vim set omnifunc=syntaxcomplete#Complete
 "au FileType php set ft=php.cakephp
 
 " markdown
-au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n:&gt; linebreak
+"au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n:&gt; linebreak
 
 " PHP parser check (CTRL-L)
 :autocmd FileType php noremap <C-L> :!php -l %<CR>
