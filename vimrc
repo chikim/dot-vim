@@ -109,12 +109,6 @@ let g:syntastic_auto_loc_list=0
 let g:syntastic_enable_signs=1
 let g:syntastic_disabled_filetypes = ['html']
 
-" SuperTab continued
-"let g:SuperTabDefaultCompletionType = "context"
-"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-"let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-
 " status bar format
 runtime! statusbar.vim
 
