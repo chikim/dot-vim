@@ -8,6 +8,8 @@ winpos 0 878
 set co=124
 set lines=64
 
+set linebreak
+
 " smaller or bigger?
 map <Leader>-- :set co=110<CR>
 map <Leader>--- :set co=166<CR>
