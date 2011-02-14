@@ -29,6 +29,9 @@ set showtabline=2
 
 set cursorline
 
+" ignore in gui only 
+set wildignore+=_site/**
+
 " cycle though tabs with Ctrl-Tab
 nmap <C-Tab> :tabnext<CR>
 map <C-Tab> :tabnext<CR>

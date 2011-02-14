@@ -40,6 +40,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+" indent 2 for ruby
+au FileType ruby set tabstop=2 softtabstop=2 shiftwidth=2
+
 set autoindent
 
 set wrap
@@ -49,13 +52,14 @@ set formatoptions=qrnoc
 set ttyfast
 
 " save on losing focus
-au FocusLost * :wa
+"au FocusLost * :wa
 
 " always show the status bar
 set laststatus=2
 
 if has("gui_macvim")
-    set relativenumber
+    "set relativenumber
+    set number
 else
     set number
 endif
@@ -174,4 +178,3 @@ let g:EasyGrepCommand=1
 " move visual selected blocks more then once
 vnoremap < <gv
 vnoremap > >gv
-
