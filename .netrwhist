@@ -1,8 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/chronon/www/cakebox/public'
-let g:netrw_dirhist_2='/Users/chronon/www/chronon.com/public'
-let g:netrw_dirhist_3='/Users/chronon/www/christiangamesandcrafts.com/public/webroot/discussions'
-let g:netrw_dirhist_4='/usr/www/users/chronon/lithium/libraries/glip/lib'
-let g:netrw_dirhist_5='/Users/chronon/ports'
-let g:netrw_dirhist_6='/Users/chronon/repos/cakephp/plugins/media/libs/mm/src/Media/Process'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/chronon/www/mmd.chronon.us/public/views/users'
+let g:netrw_dirhist_2='/Users/chronon/www/mmd.chronon.us/public/views/elements'

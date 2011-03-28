@@ -43,4 +43,5 @@ if has("gui_macvim")
     "set transp=1
 endif
 
-au FileType markdown set co=110
+" save when focus is lost
+au FocusLost * :wa

@@ -34,14 +34,20 @@ call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags()
 filetype plugin indent on
 
-" indent 4
-set expandtab
-set tabstop=4
-set softtabstop=4
+" tabs: spaces VS tabs... 
+" CakePHP and Lithium coding standard (hard tab) 
+set noexpandtab
+" PEAR and Zend coding standard (indent of 4 spaces, with no tabs):
+"set expandtab
 set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
+" spaces NOT tabs for python
+au BufEnter,BufRead *.py setlocal expandtab
 
 " indent 2 for ruby
-au FileType ruby set tabstop=2 softtabstop=2 shiftwidth=2
+au BufEnter,BufRead *.rb setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
 
 set autoindent
 
@@ -92,7 +98,7 @@ au ColorScheme *.php,*.css highlight ExtraWhitespace ctermbg=red guibg=#990000
 " bye-bye trailing whitespaces from .php and .css files
 au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
-autocmd BufRead,BufNewFile *.ctp set filetype=php
+au BufRead,BufNewFile *.ctp set filetype=php
 
 " grep.vim plugin
 "let Grep_Skip_Dirs = 'tmp .git'
