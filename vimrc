@@ -28,6 +28,9 @@ set matchtime=2
 set wildmenu
 set wildmode=longest,list,full
 
+" ignore (mostly for command-t)
+set wildignore+=*.pyc,*.tmp
+
 filetype off
 " pathogen
 call pathogen#runtime_append_all_bundles()
@@ -36,15 +39,21 @@ filetype plugin indent on
 
 " tabs: spaces VS tabs... 
 " CakePHP and Lithium coding standard (hard tab) 
-set noexpandtab
+" set noexpandtab
 " PEAR and Zend coding standard (indent of 4 spaces, with no tabs):
-"set expandtab
+" set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
+" using spaces, not tabs as default
+set expandtab
+
+" tabs, not spaces for php, ctp
+au BufEnter,BufRead *.php,*.ctp setlocal noexpandtab
+
 " spaces NOT tabs for python
-au BufEnter,BufRead *.py setlocal expandtab
+" au BufEnter,BufRead *.py setlocal expandtab
 
 " indent 2 for ruby
 au BufEnter,BufRead *.rb setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
@@ -126,6 +135,7 @@ runtime! statusbar.vim
 set completeopt=menu
 
 " language specific omnifunctions
+au FileType python set omnifunc=pythoncomplete#Complete
 au FileType php,ctp set omnifunc=phpcomplete#CompletePHP
 au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 au FileType html,ctp set omnifunc=htmlcomplete#CompleteTags
@@ -139,6 +149,7 @@ au FileType vim set omnifunc=syntaxcomplete#Complete
 
 " markdown
 "au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n:&gt; linebreak
+au BufRead *.mkd,*.md,*.mdown,*.markdown set tw=0
 
 " PHP parser check (CTRL-L)
 :autocmd FileType php noremap <C-L> :!php -l %<CR>
@@ -168,6 +179,9 @@ map <Leader>cake :set filetype=php.cakephp <CR>
 map <Leader>xx :set filetype=xml <CR>
 map <Leader>hh :set filetype=html <CR>
 map <Leader>pp :set filetype=php <CR>
+
+" ghetto xml format
+map <Leader>fxml :%s/></>\r</g <CR> gg=G
 
 " Command-T mapping changes (enter to open in new tab, ctrl-t for current
 let g:CommandTAcceptSelectionMap='<C-t>'
