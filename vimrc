@@ -148,8 +148,7 @@ au FileType vim set omnifunc=syntaxcomplete#Complete
 "au FileType php set ft=php.cakephp
 
 " markdown
-"au BufRead *.mkd,*.md,*.mdown,*.markdown set ai formatoptions=tcroqn2 comments=n:&gt; linebreak
-au BufRead *.mkd,*.md,*.mdown,*.markdown set tw=0
+au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal tw=0
 
 " PHP parser check (CTRL-L)
 :autocmd FileType php noremap <C-L> :!php -l %<CR>
@@ -174,14 +173,11 @@ map <leader>nhl :hi ErrorMsg guibg=NONE guifg=NONE<CR>
 " manually trim all trailing whitespace
 map <Leader>tws :%s/\s\+$//<CR>
 
-" set filetypes
-map <Leader>cake :set filetype=php.cakephp <CR>
-map <Leader>xx :set filetype=xml <CR>
-map <Leader>hh :set filetype=html <CR>
-map <Leader>pp :set filetype=php <CR>
-
 " ghetto xml format
 map <Leader>fxml :%s/></>\r</g <CR> gg=G
+
+" ctrl space for omnicomplete
+imap <C-Space> <C-x><C-o>
 
 " Command-T mapping changes (enter to open in new tab, ctrl-t for current
 let g:CommandTAcceptSelectionMap='<C-t>'
@@ -198,3 +194,10 @@ let g:EasyGrepCommand=1
 " move visual selected blocks more then once
 vnoremap < <gv
 vnoremap > >gv
+
+" omni-completion in a virtualenv for django
+if filereadable($VIRTUAL_ENV . '/.vimrc')
+    source $VIRTUAL_ENV/.vimrc
+endif
+
+let python_highlight_all = 1
