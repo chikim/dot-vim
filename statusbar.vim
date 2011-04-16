@@ -28,5 +28,5 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 set statusline+=%=                           " right align
-set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ \   " highlight
+"set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ \   " highlight
 set statusline+=%-14.(%l\ of\ %L,\ col:\ %c%V%)\ %<%P        " offset

@@ -73,8 +73,8 @@ set ttyfast
 set laststatus=2
 
 if has("gui_macvim")
-    "set relativenumber
-    set number
+    set relativenumber
+    "set number
 else
     set number
 endif

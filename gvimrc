@@ -1,21 +1,19 @@
-set gfn=DejaVu\ Sans\ Mono:h11
-colorscheme chronon
+"set gfn=DejaVu\ Sans\ Mono:h11
+set gfn=Menlo:h13
+set background=dark
+colorscheme solarized
 
 " position
 winpos 0 878
 
 " size
-set co=124
-set lines=64
+set co=104
+set lines=55
 
 set linebreak
 
-" smaller or bigger?
-map <Leader>-- :set co=110<CR>
-map <Leader>--- :set co=166<CR>
-
 " hilight column widths
-set colorcolumn=81,101
+set colorcolumn=81
 
 " no toolbar and menus.
 set guioptions-=T
