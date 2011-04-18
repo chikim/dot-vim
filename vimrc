@@ -42,6 +42,7 @@ filetype plugin indent on
 " set noexpandtab
 " PEAR and Zend coding standard (indent of 4 spaces, with no tabs):
 " set expandtab
+
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
@@ -61,7 +62,7 @@ au BufEnter,BufRead *.rb setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
 set autoindent
 
 set wrap
-set textwidth=79
+set textwidth=80
 set formatoptions=qrnoc
 
 set ttyfast

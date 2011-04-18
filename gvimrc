@@ -1,5 +1,5 @@
 "set gfn=DejaVu\ Sans\ Mono:h11
-set gfn=Menlo:h13
+set gfn=Menlo:h12
 set background=dark
 colorscheme solarized
 
@@ -7,13 +7,13 @@ colorscheme solarized
 winpos 0 878
 
 " size
-set co=104
-set lines=55
+set co=120
+set lines=59
 
 set linebreak
 
-" hilight column widths
-set colorcolumn=81
+" hilight column widths, presently 1 column after textwidth 
+set colorcolumn=+1
 
 " no toolbar and menus.
 set guioptions-=T
@@ -25,7 +25,7 @@ set guioptions-=rL
 " show tabbar
 set showtabline=2
 
-set cursorline
+"set cursorline
 
 " ignore in gui only 
 set wildignore+=_site/**
