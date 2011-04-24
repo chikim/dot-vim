@@ -1,5 +1,5 @@
 "set gfn=DejaVu\ Sans\ Mono:h11
-set gfn=Menlo:h12
+set gfn=Menlo:h11
 set background=dark
 colorscheme solarized
 
@@ -8,7 +8,7 @@ winpos 0 878
 
 " size
 set co=120
-set lines=59
+set lines=64
 
 set linebreak
 

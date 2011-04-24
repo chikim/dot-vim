@@ -34,7 +34,7 @@ set wildignore+=*.pyc,*.tmp
 filetype off
 " pathogen
 call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
+call pathogen#helptags()
 filetype plugin indent on
 
 " tabs: spaces VS tabs... 
