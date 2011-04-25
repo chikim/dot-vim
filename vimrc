@@ -62,8 +62,8 @@ au BufEnter,BufRead *.rb setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
 set autoindent
 
 set wrap
-set textwidth=80
-set formatoptions=qrnoc
+set textwidth=79
+set formatoptions=qrnc1
 
 set ttyfast
 
@@ -99,14 +99,13 @@ au BufWritePost *.php setlocal nobinary
 "au BufWinEnter *.php let w:m1=matchadd('Search', '\%<101v.\%>80v', -1)
 "au BufWinEnter *.php let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 
-"" highlight trailing whitespace for .php and .css files
-au InsertEnter *.php,*.css match ExtraWhitespace /\s\+\%#\@<!$/
-au BufRead,InsertLeave *.php,*.css match ExtraWhitespace /\s\+$/
-hi ExtraWhitespace ctermbg=red guibg=#990000
-au ColorScheme *.php,*.css highlight ExtraWhitespace ctermbg=red guibg=#990000
+"" highlight trailing whitespace for certain types of files
+au BufEnter,BufRead *.php,*.css,*.py match ExtraWhitespace /\s\+$/
+au ColorScheme *.php,*.css,*.py highlight ExtraWhitespace ctermbg=red guibg=#990000
 
-" bye-bye trailing whitespaces from .php and .css files
-au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+" bye-bye trailing whitespaces for certain types of files
+"au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+autocmd BufWritePre *.php,*.css,*.py :call <SID>StripTrailingWhitespaces()
 
 au BufRead,BufNewFile *.ctp set filetype=php
 
@@ -127,7 +126,11 @@ let g:CommandTMaxHeight=25
 " syntastic
 let g:syntastic_auto_loc_list=0
 let g:syntastic_enable_signs=1
-let g:syntastic_disabled_filetypes = ['html']
+"let g:syntastic_quiet_warnings=1
+let g:syntastic_disabled_filetypes = ['html', 'python']
+
+" vim-pep8
+au BufEnter,Bufread *.py call Pep8()
 
 " status bar format
 runtime! statusbar.vim
@@ -202,3 +205,11 @@ if filereadable($VIRTUAL_ENV . '/.vimrc')
 endif
 
 let python_highlight_all = 1
+
+" functions
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun

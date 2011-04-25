@@ -13,7 +13,7 @@ set lines=64
 set linebreak
 
 " hilight column widths, presently 1 column after textwidth 
-set colorcolumn=+1
+set colorcolumn=+2
 
 " no toolbar and menus.
 set guioptions-=T
