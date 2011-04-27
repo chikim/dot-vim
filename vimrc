@@ -100,8 +100,9 @@ au BufWritePost *.php setlocal nobinary
 "au BufWinEnter *.php let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 
 "" highlight trailing whitespace for certain types of files
-au BufEnter,BufRead *.php,*.css,*.py match ExtraWhitespace /\s\+$/
-au ColorScheme *.php,*.css,*.py highlight ExtraWhitespace ctermbg=red guibg=#990000
+hi ExtraWhitespace ctermbg=red guibg=#990000
+au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#990000
+au BufEnter *.php,*.css,*.py match ExtraWhitespace /\s\+$/
 
 " bye-bye trailing whitespaces for certain types of files
 "au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
@@ -129,8 +130,8 @@ let g:syntastic_enable_signs=1
 "let g:syntastic_quiet_warnings=1
 let g:syntastic_disabled_filetypes = ['html', 'python']
 
-" vim-pep8
-au BufEnter,Bufread *.py call Pep8()
+" vim-pep8 all the time, otherwise it's F6
+" au BufEnter,Bufread *.py call Pep8()
 
 " status bar format
 runtime! statusbar.vim
@@ -204,7 +205,7 @@ if filereadable($VIRTUAL_ENV . '/.vimrc')
     source $VIRTUAL_ENV/.vimrc
 endif
 
-let python_highlight_all = 1
+"let python_highlight_all = 1
 
 " functions
 fun! <SID>StripTrailingWhitespaces()
