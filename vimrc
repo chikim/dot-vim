@@ -100,13 +100,15 @@ au BufWritePost *.php setlocal nobinary
 "au BufWinEnter *.php let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 
 "" highlight trailing whitespace for certain types of files
+au InsertEnter *.php,*.css,*.py match ExtraWhitespace /\s\+\%#\@<!$/
+au BufRead,InsertLeave *.php,*.css,*.py match ExtraWhitespace /\s\+$/
 hi ExtraWhitespace ctermbg=red guibg=#990000
 au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#990000
-au BufEnter *.php,*.css,*.py match ExtraWhitespace /\s\+$/
+
 
 " bye-bye trailing whitespaces for certain types of files
 "au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-autocmd BufWritePre *.php,*.css,*.py :call <SID>StripTrailingWhitespaces()
+"autocmd BufWritePre *.php,*.css,*.py :call <SID>StripTrailingWhitespaces()
 
 au BufRead,BufNewFile *.ctp set filetype=php
 
@@ -214,3 +216,6 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
+
+" preview reStructuredText with :Rst
+:command Rst :silent !rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
