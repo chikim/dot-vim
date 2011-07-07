@@ -8,7 +8,8 @@ winpos 0 878
 
 " size
 set co=120
-set lines=64
+"set lines=64
+set lines=77
 
 set linebreak
 

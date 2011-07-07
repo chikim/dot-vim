@@ -101,14 +101,13 @@ au BufWritePost *.php setlocal nobinary
 
 "" highlight trailing whitespace for certain types of files
 au InsertEnter *.php,*.css,*.py match ExtraWhitespace /\s\+\%#\@<!$/
-au BufRead,InsertLeave *.php,*.css,*.py match ExtraWhitespace /\s\+$/
+au BufRead *.php,*.css,*.py match ExtraWhitespace /\s\+$/
 hi ExtraWhitespace ctermbg=red guibg=#990000
 au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#990000
 
-
 " bye-bye trailing whitespaces for certain types of files
 "au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-"autocmd BufWritePre *.php,*.css,*.py :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.php,*.css :call <SID>StripTrailingWhitespaces()
 
 au BufRead,BufNewFile *.ctp set filetype=php
 
@@ -186,6 +185,8 @@ map <Leader>fxml :%s/></>\r</g <CR> gg=G
 " ctrl space for omnicomplete
 imap <C-Space> <C-x><C-o>
 
+map <Leader>ibd <ins><CR><esc>
+
 " Command-T mapping changes (enter to open in new tab, ctrl-t for current
 let g:CommandTAcceptSelectionMap='<C-t>'
 let g:CommandTAcceptSelectionTabMap='<CR>'
@@ -219,3 +220,5 @@ endfun
 
 " preview reStructuredText with :Rst
 :command Rst :silent !rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
+
+let loaded_matchparen = 1
