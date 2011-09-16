@@ -73,12 +73,7 @@ set ttyfast
 " always show the status bar
 set laststatus=2
 
-if has("gui_macvim")
-    set relativenumber
-    "set number
-else
-    set number
-endif
+set number
 
 " auto read when a file is changed from elsewhere
 set autoread
@@ -149,16 +144,19 @@ au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType xml set omnifunc=xmlcomplete#CompleteTags
 au FileType vim set omnifunc=syntaxcomplete#Complete
 
-
-" cakephp snippets
-"au FileType php set ft=php.cakephp
+" cakephp 
+au BufEnter,BufRead {controllers,models,views,plugins,lib}/* set ft=php.cakephp
+au BufEnter,BufRead {Controller,Model,View,Plugin,Lib}/* set ft=php.cakephp
+"au BufEnter,BufRead *.ctp set ft=php.cakephp
+au FileType php,php.cakephp set commentstring=//\%s 
+au FileType html set commentstring=<!--%s--> 
 
 " markdown
 au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal tw=0
 
 " PHP parser check (CTRL-L)
-:autocmd FileType php noremap <C-L> :!php -l %<CR>
-map <Leader>w :w\| !php -l %<CR>
+":autocmd FileType php noremap <C-L> :!php -l %<CR>
+"map <Leader>w :w\| !php -l %<CR>
 
 map <Leader>, :NERDTreeToggle<cr>
 map <Leader>. :TlistToggle<cr>
@@ -186,6 +184,10 @@ map <Leader>fxml :%s/></>\r</g <CR> gg=G
 imap <C-Space> <C-x><C-o>
 
 map <Leader>ibd <ins><CR><esc>
+
+" for commentary plugin
+map <Leader>\h :set commentstring=<!--%s--> <CR>
+map <Leader>\p :set commentstring=//\%s <CR>
 
 " Command-T mapping changes (enter to open in new tab, ctrl-t for current
 let g:CommandTAcceptSelectionMap='<C-t>'
