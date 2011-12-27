@@ -1,10 +1,15 @@
+set nocompatible
+
+" pathogen
+call pathogen#infect()
+call pathogen#helptags()
+
 scriptencoding utf-8
 set fileencodings=utf-8
 
 let mapleader = ","
 set directory=/tmp/
 
-set nocompatible
 syntax on
 set nobackup
 
@@ -31,15 +36,9 @@ set wildmode=longest,list,full
 " ignore (mostly for command-t)
 set wildignore+=*.pyc,*.tmp
 
-filetype off
-" pathogen
-"call pathogen#runtime_append_all_bundles()
-call pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on
 
 " tabs: spaces VS tabs... 
-" CakePHP and Lithium coding standard (hard tab) 
+" CakePHP coding standard (hard tab) 
 " set noexpandtab
 " PEAR and Zend coding standard (indent of 4 spaces, with no tabs):
 " set expandtab
