@@ -33,7 +33,8 @@ set wildignore+=*.pyc,*.tmp
 
 filetype off
 " pathogen
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on
 
@@ -192,14 +193,6 @@ map <Leader>\p :set commentstring=//\%s <CR>
 " Command-T mapping changes (enter to open in new tab, ctrl-t for current
 let g:CommandTAcceptSelectionMap='<C-t>'
 let g:CommandTAcceptSelectionTabMap='<CR>'
-
-" EasyGrep config
-" use the TrackExt mode 
-let g:EasyGrepMode=2
-" recursive on
-let g:EasyGrepRecursive=1
-" use system grep, no slow vimgrep
-let g:EasyGrepCommand=1
 
 " move visual selected blocks more then once
 vnoremap < <gv
