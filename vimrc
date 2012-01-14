@@ -4,6 +4,8 @@ set nocompatible
 call pathogen#infect()
 call pathogen#helptags()
 
+filetype plugin on
+
 scriptencoding utf-8
 set fileencodings=utf-8
 
@@ -216,3 +218,4 @@ endfun
 :command Rst :silent !rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
 
 let loaded_matchparen = 1
+let g:Powerline_symbols = 'unicode'
