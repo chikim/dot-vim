@@ -26,7 +26,7 @@ set guioptions-=rL
 " show tabbar
 set showtabline=2
 
-"set cursorline
+set cursorline
 
 " ignore in gui only 
 set wildignore+=_site/**

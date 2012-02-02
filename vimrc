@@ -6,8 +6,9 @@ call pathogen#helptags()
 
 filetype plugin on
 
-scriptencoding utf-8
-set fileencodings=utf-8
+set encoding=utf-8
+
+set listchars=tab:▸\ ,eol:¬,trail:·
 
 let mapleader = ","
 set directory=/tmp/
@@ -27,6 +28,9 @@ set guicursor+=a:blinkon0
 " search and show matches as you type
 set incsearch
 
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 " highlight matching parens
 set showmatch
 set matchtime=2
@@ -38,7 +42,6 @@ set wildmode=longest,list,full
 " ignore (mostly for command-t)
 set wildignore+=*.pyc,*.tmp
 
-
 " tabs: spaces VS tabs... 
 " CakePHP coding standard (hard tab) 
 " set noexpandtab
@@ -49,22 +52,22 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-" using spaces, not tabs as default
-set expandtab
-
-" tabs, not spaces for php, ctp
-au BufEnter,BufRead *.php,*.ctp setlocal noexpandtab
-
-" spaces NOT tabs for python
-" au BufEnter,BufRead *.py setlocal expandtab
-
-" indent 2 for ruby
-au BufEnter,BufRead *.rb setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
-
 set autoindent
 
+" using tabs, not spaces as default (expandtab default is off) 
+"set noexpandtab
+
+" tabs, not spaces for php, ctp
+"au BufEnter,BufRead *.php,*.ctp setlocal noexpandtab
+
+" spaces NOT tabs for python
+au FileType python setl softtabstop=4 shiftwidth=4 tabstop=4 textwidth=80 expandtab
+
+" indent 2 spaces for ruby
+au FileType ruby,yaml setl softtabstop=2 tabstop=2 expandtab
+
 set wrap
-set textwidth=79
+set textwidth=80
 set formatoptions=qrnc1
 
 set ttyfast
@@ -92,47 +95,27 @@ au BufWritePre *.php setlocal binary
 au BufWritePre *.php setlocal noeol
 au BufWritePost *.php setlocal nobinary
 
-" highlight long lines (soft limit: 80, hard limit: 100)
-"au BufWinEnter *.php let w:m1=matchadd('Search', '\%<101v.\%>80v', -1)
-"au BufWinEnter *.php let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
-
 "" highlight trailing whitespace for certain types of files
-au InsertEnter *.php,*.css,*.py match ExtraWhitespace /\s\+\%#\@<!$/
-au BufRead *.php,*.css,*.py match ExtraWhitespace /\s\+$/
-hi ExtraWhitespace ctermbg=red guibg=#990000
-au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#990000
+"au InsertEnter *.php,*.css,*.py match ExtraWhitespace /\s\+\%#\@<!$/
+"au BufRead *.php,*.css,*.py match ExtraWhitespace /\s\+$/
+"hi ExtraWhitespace ctermbg=red guibg=#990000
+"au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#990000
 
 " bye-bye trailing whitespaces for certain types of files
-"au FileType php,css au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 autocmd BufWritePre *.php,*.css :call <SID>StripTrailingWhitespaces()
 
 au BufRead,BufNewFile *.ctp set filetype=php
 
-" grep.vim plugin
-"let Grep_Skip_Dirs = 'tmp .git'
-"let Grep_Skip_Files = '.git*'
-"let Grep_Xargs_Path = '/opt/local/bin/gxargs'
-
 " Command-T plugin
 let g:CommandTMaxHeight=25
 
-" taglist.vim 
-"let Tlist_Use_Right_Window = 1
-"let Tlist_Exit_OnlyWindow = 1
-"let Tlist_Enable_Fold_Column = 0
-"let Tlist_File_Fold_Auto_Close = 1
-
 " syntastic
-let g:syntastic_auto_loc_list=0
-let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
 "let g:syntastic_quiet_warnings=1
-let g:syntastic_disabled_filetypes = ['html', 'python']
+"let g:syntastic_disabled_filetypes = ['html', 'python']
 
 " vim-pep8 all the time, otherwise it's F6
 " au BufEnter,Bufread *.py call Pep8()
-
-" status bar format
-runtime! statusbar.vim
 
 " don't show the complete menu preview, default is completeopt=menu,preview
 set completeopt=menu
