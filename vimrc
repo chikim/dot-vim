@@ -66,6 +66,8 @@ au FileType python setl softtabstop=4 shiftwidth=4 tabstop=4 textwidth=80 expand
 " indent 2 spaces for ruby
 au FileType ruby,yaml setl softtabstop=2 tabstop=2 expandtab
 
+au FileType scss setl tabstop=2
+
 set wrap
 set textwidth=80
 set formatoptions=qrnc1
@@ -112,7 +114,10 @@ let g:CommandTMaxHeight=25
 " syntastic
 let g:syntastic_auto_loc_list=1
 "let g:syntastic_quiet_warnings=1
-"let g:syntastic_disabled_filetypes = ['html', 'python']
+"let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_mode_map = { 'mode': 'passive',
+						   \ 'active_filetypes': [],
+						   \ 'passive_filetypes': ['html'] }
 
 " vim-pep8 all the time, otherwise it's F6
 " au BufEnter,Bufread *.py call Pep8()
