@@ -11,8 +11,6 @@ set co=120
 "set lines=64
 set lines=77
 
-set linebreak
-
 " hilight column widths, presently 1 column after textwidth 
 set colorcolumn=+2
 
@@ -44,4 +42,6 @@ if has("gui_macvim")
 endif
 
 " save when focus is lost
-au FocusLost * :wa
+"au FocusLost * :wa
+
+nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>

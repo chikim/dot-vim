@@ -52,7 +52,8 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-set autoindent
+set smartindent
+set linebreak
 
 " using tabs, not spaces as default (expandtab default is off) 
 "set noexpandtab
@@ -67,6 +68,8 @@ au FileType python setl softtabstop=4 shiftwidth=4 tabstop=4 textwidth=80 expand
 au FileType ruby,yaml setl softtabstop=2 tabstop=2 expandtab
 
 au FileType scss setl tabstop=2
+
+au FileType markdown setl spell
 
 set wrap
 set textwidth=80
