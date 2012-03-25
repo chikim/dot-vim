@@ -25,6 +25,10 @@ set vb t_vb=
 " non-blinking cursor
 set guicursor+=a:blinkon0
 
+" indent folding
+set foldmethod=indent
+set foldlevelstart=20
+
 " search and show matches as you type
 set incsearch
 
@@ -145,7 +149,7 @@ au FileType php,php.cakephp set commentstring=//\%s
 au FileType html set commentstring=<!--%s--> 
 
 " markdown
-au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal tw=0
+au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal tw=0 ft=markdown
 
 " PHP parser check (CTRL-L)
 ":autocmd FileType php noremap <C-L> :!php -l %<CR>
@@ -206,7 +210,11 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 
 " preview reStructuredText with :Rst
-:command Rst :silent !rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
+" :command Rst :silent !rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
 
 let loaded_matchparen = 1
 let g:Powerline_symbols = 'unicode'
+
+au BufRead,BufNewFile *.php inoremap <buffer> <C-P> :call PhpDoc()<CR>
+au BufRead,BufNewFile *.php nnoremap <buffer> <C-P> :call PhpDoc()<CR>
+au BufRead,BufNewFile *.php vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
