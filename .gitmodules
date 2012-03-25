@@ -37,3 +37,6 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/php-documenter-vim"]
+	path = bundle/php-documenter-vim
+	url = https://github.com/sumpygump/php-documentor-vim.git

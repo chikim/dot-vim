@@ -215,10 +215,7 @@ endfun
 let loaded_matchparen = 1
 let g:Powerline_symbols = 'unicode'
 
-" au BufRead,BufNewFile *.php inoremap <buffer> <C-P> :call PhpDoc()<CR>
-" au BufRead,BufNewFile *.php nnoremap <buffer> <C-P> :call PhpDoc()<CR>
-" au BufRead,BufNewFile *.php vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
+au BufRead,BufNewFile *.php inoremap <buffer> <C-P> :call PhpDoc()<CR>
+au BufRead,BufNewFile *.php nnoremap <buffer> <C-P> :call PhpDoc()<CR>
+au BufRead,BufNewFile *.php vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
 
-inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
-nnoremap <C-P> :call PhpDocSingle()<CR> 
-vnoremap <C-P> :call PhpDocRange()<CR>
