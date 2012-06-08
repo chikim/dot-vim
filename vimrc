@@ -44,7 +44,7 @@ set wildmenu
 set wildmode=longest,list,full
 
 " ignore (mostly for command-t)
-set wildignore+=*.pyc,*.tmp
+set wildignore+=*.pyc,*.tmp,tmp/*
 
 " tabs: spaces VS tabs... 
 " CakePHP coding standard (hard tab) 
@@ -62,22 +62,18 @@ set linebreak
 " using tabs, not spaces as default (expandtab default is off) 
 "set noexpandtab
 
-" tabs, not spaces for php, ctp
-"au BufEnter,BufRead *.php,*.ctp setlocal noexpandtab
-
 " spaces NOT tabs for python
-au FileType python setl softtabstop=4 shiftwidth=4 tabstop=4 textwidth=80 expandtab
+au FileType python setl textwidth=80 expandtab
 
 " indent 2 spaces for ruby
-au FileType ruby,yaml setl softtabstop=2 tabstop=2 expandtab
+au FileType ruby,yaml,scss setl softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 
-au FileType scss setl tabstop=2
+" au BufEnter,BufRead *.ctp setlocal softtabstop=2 shiftwidth=2 tabstop=2
 
-au FileType markdown setl spell
 
 set wrap
 set textwidth=80
-set formatoptions=qrnc1
+set formatoptions=qrnco1
 
 set ttyfast
 
@@ -119,12 +115,13 @@ au BufRead,BufNewFile *.ctp set filetype=php
 let g:CommandTMaxHeight=25
 
 " syntastic
-let g:syntastic_auto_loc_list=1
-"let g:syntastic_quiet_warnings=1
-"let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_auto_jump = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
-						   \ 'active_filetypes': [],
-						   \ 'passive_filetypes': ['html'] }
+							\'active_filetypes': [],
+						    \'passive_filetypes': [] }
+
+let g:syntastic_phpcs_conf = "--standard=CakePHP"
+map <Leader>sc :SyntasticCheck<cr>
 
 " vim-pep8 all the time, otherwise it's F6
 " au BufEnter,Bufread *.py call Pep8()
@@ -142,14 +139,12 @@ au FileType xml set omnifunc=xmlcomplete#CompleteTags
 au FileType vim set omnifunc=syntaxcomplete#Complete
 
 " cakephp 
-au BufEnter,BufRead {controllers,models,views,plugins,lib}/* set ft=php.cakephp
-au BufEnter,BufRead {Controller,Model,View,Plugin,Lib}/* set ft=php.cakephp
-"au BufEnter,BufRead *.ctp set ft=php.cakephp
-au FileType php,php.cakephp set commentstring=//\%s 
-au FileType html set commentstring=<!--%s--> 
+" au BufEnter,BufRead {controllers,models,views,plugins,lib}/* set ft=php.cakephp
+" au BufEnter,BufRead {Controller,Model,View,Plugin,Lib}/* set ft=php.cakephp
 
 " markdown
-au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal tw=0 ft=markdown
+au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal ft=markdown
+au FileType markdown setl spell tw=100
 
 " PHP parser check (CTRL-L)
 ":autocmd FileType php noremap <C-L> :!php -l %<CR>
@@ -219,3 +214,11 @@ au BufRead,BufNewFile *.php inoremap <buffer> <C-P> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php nnoremap <buffer> <C-P> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
 
+" compile scss/jekyll sites if the _bin/build script exists on .scss save
+function! BuildSite()
+	if filereadable("_bin/build")
+		silent !_bin/build
+	endif
+endfunction
+	
+au BufWritePost *.scss call BuildSite()

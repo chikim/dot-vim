@@ -4,7 +4,7 @@ set background=dark
 colorscheme solarized
 
 " position
-winpos 0 878
+" winpos 0 878
 
 " size
 set co=120
