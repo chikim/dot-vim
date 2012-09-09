@@ -1,10 +1,21 @@
 set nocompatible
+filetype off
 
-" pathogen
-call pathogen#infect()
-call pathogen#helptags()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-filetype plugin on
+Bundle 'gmarik/vundle'
+
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'gregsexton/MatchTag'
+Bundle 'mileszs/ack.vim'
+Bundle 'wincent/Command-T'
+Bundle 'majutsushi/tagbar'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-surround'
+
+filetype plugin indent on
 
 set encoding=utf-8
 
@@ -150,8 +161,6 @@ au FileType markdown setl spell tw=100
 ":autocmd FileType php noremap <C-L> :!php -l %<CR>
 "map <Leader>w :w\| !php -l %<CR>
 
-map <Leader>, :NERDTreeToggle<cr>
-map <Leader>. :TlistToggle<cr>
 
 " recursive search for word under cursor
 " silent!grep -R chronon *
@@ -177,9 +186,10 @@ imap <C-Space> <C-x><C-o>
 
 map <Leader>ibd <ins><CR><esc>
 
-" for commentary plugin
-map <Leader>\h :set commentstring=<!--%s--> <CR>
-map <Leader>\p :set commentstring=//\%s <CR>
+" Tagbar
+let g:tagbar_autofocus = 1
+nmap <Leader>, :set co=140 <CR> :TagbarOpen<CR>
+nmap <Leader>. :set co=120 <CR> :TagbarClose<CR>
 
 " Command-T mapping changes (enter to open in new tab, ctrl-t for current
 let g:CommandTAcceptSelectionMap='<C-t>'

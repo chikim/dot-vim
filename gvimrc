@@ -8,8 +8,8 @@ colorscheme solarized
 
 " size
 set co=120
-"set lines=64
-set lines=77
+" set lines=64
+set lines=79
 
 " hilight column widths, presently 1 column after textwidth 
 set colorcolumn=+2
