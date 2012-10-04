@@ -14,6 +14,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
@@ -188,8 +189,10 @@ map <Leader>ibd <ins><CR><esc>
 
 " Tagbar
 let g:tagbar_autofocus = 1
-nmap <Leader>, :set co=140 <CR> :TagbarOpen<CR>
-nmap <Leader>. :set co=120 <CR> :TagbarClose<CR>
+" nmap <Leader>, :set co=140 <CR> :TagbarOpen<CR>
+" nmap <Leader>. :set co=120 <CR> :TagbarClose<CR>
+nmap <Leader>, :TagbarOpen<CR>
+nmap <Leader>. :TagbarClose<CR>
 
 " Command-T mapping changes (enter to open in new tab, ctrl-t for current
 let g:CommandTAcceptSelectionMap='<C-t>'
@@ -219,16 +222,19 @@ endfun
 
 let loaded_matchparen = 1
 let g:Powerline_symbols = 'unicode'
+" let g:Powerline_symbols = 'fancy'
 
 au BufRead,BufNewFile *.php inoremap <buffer> <C-P> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php nnoremap <buffer> <C-P> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
 
 " compile scss/jekyll sites if the _bin/build script exists on .scss save
-function! BuildSite()
-	if filereadable("_bin/build")
-		silent !_bin/build
-	endif
-endfunction
-	
-au BufWritePost *.scss call BuildSite()
+" function! BuildSite()
+" 	if filereadable("_bin/build")
+" 		silent !_bin/build
+" 	endif
+" endfunction
+" 	
+" au BufWritePost *.scss call BuildSite()
+
+" ack -al 'pattern' | xargs perl -pi -E 's/pattern/replacement/g'
