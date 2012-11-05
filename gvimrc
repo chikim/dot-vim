@@ -37,7 +37,8 @@ imap <C-Tab> <C-O>:tabnext<CR>
 
 if has("gui_macvim")
     macmenu &File.New\ Tab key=<nop>
-    map <D-t> :CommandT<CR>
+    " map <D-t> :CommandT<CR>
+    map <D-t> :CtrlP<CR>
     "set transp=1
 endif
 

@@ -9,12 +9,13 @@ Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'gregsexton/MatchTag'
 Bundle 'mileszs/ack.vim'
-Bundle 'wincent/Command-T'
 Bundle 'majutsushi/tagbar'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
+Bundle 'edsono/vim-matchit'
+Bundle 'kien/ctrlp.vim'
 
 filetype plugin indent on
 
@@ -55,7 +56,7 @@ set matchtime=2
 set wildmenu
 set wildmode=longest,list,full
 
-" ignore (mostly for command-t)
+" ignore (mostly for ctrl-p)
 set wildignore+=*.pyc,*.tmp,tmp/*
 
 " tabs: spaces VS tabs... 
@@ -77,11 +78,14 @@ set linebreak
 " spaces NOT tabs for python
 au FileType python setl textwidth=80 expandtab
 
-" indent 2 spaces for ruby
+" indent 2 spaces for ruby, sass
 au FileType ruby,yaml,scss setl softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 
-" au BufEnter,BufRead *.ctp setlocal softtabstop=2 shiftwidth=2 tabstop=2
+" indent 1 tab = 2 spaces for html
+au FileType html,css setl softtabstop=2 tabstop=2 shiftwidth=2
 
+" indent 1 tab = 2 spaces for CakePHP templates
+au BufEnter,BufRead *.ctp setl softtabstop=2 tabstop=2 shiftwidth=2
 
 set wrap
 set textwidth=80
@@ -121,10 +125,11 @@ au BufWritePost *.php setlocal nobinary
 " bye-bye trailing whitespaces for certain types of files
 autocmd BufWritePre *.php,*.css :call <SID>StripTrailingWhitespaces()
 
-au BufRead,BufNewFile *.ctp set filetype=php
+au BufRead,BufNewFile *.ctp setlocal filetype=php
 
-" Command-T plugin
-let g:CommandTMaxHeight=25
+" CtrlP
+let g:ctrlp_max_height = 20
+let g:ctrlp_open_new_file = 't'
 
 " syntastic
 let g:syntastic_auto_jump = 1
@@ -193,10 +198,6 @@ let g:tagbar_autofocus = 1
 " nmap <Leader>. :set co=120 <CR> :TagbarClose<CR>
 nmap <Leader>, :TagbarOpen<CR>
 nmap <Leader>. :TagbarClose<CR>
-
-" Command-T mapping changes (enter to open in new tab, ctrl-t for current
-let g:CommandTAcceptSelectionMap='<C-t>'
-let g:CommandTAcceptSelectionTabMap='<CR>'
 
 " move visual selected blocks more then once
 vnoremap < <gv
