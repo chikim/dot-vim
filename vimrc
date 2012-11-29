@@ -130,6 +130,7 @@ au BufRead,BufNewFile *.ctp setlocal filetype=php
 " CtrlP
 let g:ctrlp_max_height = 20
 let g:ctrlp_open_new_file = 't'
+let g:ctrlp_working_path_mode = 'a'
 
 " syntastic
 let g:syntastic_auto_jump = 1
