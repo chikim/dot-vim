@@ -16,6 +16,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'edsono/vim-matchit'
 Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'php-doc'
 
 filetype plugin indent on
 
@@ -133,11 +135,11 @@ let g:ctrlp_open_new_file = 't'
 let g:ctrlp_working_path_mode = 'a'
 
 " syntastic
-let g:syntastic_auto_jump = 1
-let g:syntastic_mode_map = { 'mode': 'passive',
-							\'active_filetypes': [],
-						    \'passive_filetypes': [] }
-
+" let g:syntastic_auto_jump = 1
+" let g:syntastic_mode_map = { 'mode': 'passive',
+" 							\'active_filetypes': [],
+" 						    \'passive_filetypes': [] }
+" 
 let g:syntastic_phpcs_conf = "--standard=CakePHP"
 map <Leader>sc :SyntasticCheck<cr>
 
@@ -192,6 +194,9 @@ map <Leader>fxml :%s/></>\r</g <CR> gg=G
 imap <C-Space> <C-x><C-o>
 
 map <Leader>ibd <ins><CR><esc>
+
+" php doc
+map <Leader>pd :call PhpDoc()<CR>
 
 " Tagbar
 let g:tagbar_autofocus = 1
