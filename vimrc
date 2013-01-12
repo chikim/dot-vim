@@ -1,11 +1,12 @@
 set nocompatible
+set encoding=utf-8
+
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'gregsexton/MatchTag'
 Bundle 'mileszs/ack.vim'
@@ -14,25 +15,32 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-sensible'
 Bundle 'edsono/vim-matchit'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
-Bundle 'php-doc'
+Bundle '2072/PHP-Indenting-for-VIm'
+Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
+Bundle 'editorconfig/editorconfig-vim'
 
 filetype plugin indent on
 
-set encoding=utf-8
+" these are set in sensible.vim
+" syntax enable 
+" set backspace=indent,eol,start
+" set showmatch
+" set incsearch
+" set laststatus=2
+" set ruler
+" set wildmenu
+" set scrolloff=3
+" set autoread
 
 set listchars=tab:▸\ ,eol:¬,trail:·
-
-let mapleader = ","
-set directory=/tmp/
-
-syntax on
-set nobackup
-
-set ruler
-set scrolloff=3
+set number
+set ttyfast
+set cmdheight=2
+set hlsearch
 
 " no bells
 set vb t_vb=
@@ -44,20 +52,11 @@ set guicursor+=a:blinkon0
 set foldmethod=indent
 set foldlevelstart=20
 
-" search and show matches as you type
-set incsearch
-
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" highlight matching parens
-set showmatch
-set matchtime=2
-
 " tab complete menu
-set wildmenu
 set wildmode=longest,list,full
-
 " ignore (mostly for ctrl-p)
 set wildignore+=*.pyc,*.tmp,tmp/*
 
@@ -71,7 +70,6 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-set smartindent
 set linebreak
 
 " using tabs, not spaces as default (expandtab default is off) 
@@ -93,36 +91,11 @@ set wrap
 set textwidth=80
 set formatoptions=qrnco1
 
-set ttyfast
-
-" save on losing focus
-"au FocusLost * :wa
-
-" always show the status bar
-set laststatus=2
-
-set number
-
-" auto read when a file is changed from elsewhere
-set autoread
-
-" make backspace work in insert mode (not needed for MavVim)
-set backspace=indent,eol,start
-
-"set term=xterm
-set cmdheight=2
-set hlsearch
 
 " bye-bye eols
 au BufWritePre *.php setlocal binary
 au BufWritePre *.php setlocal noeol
 au BufWritePost *.php setlocal nobinary
-
-"" highlight trailing whitespace for certain types of files
-"au InsertEnter *.php,*.css,*.py match ExtraWhitespace /\s\+\%#\@<!$/
-"au BufRead *.php,*.css,*.py match ExtraWhitespace /\s\+$/
-"hi ExtraWhitespace ctermbg=red guibg=#990000
-"au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#990000
 
 " bye-bye trailing whitespaces for certain types of files
 autocmd BufWritePre *.php,*.css :call <SID>StripTrailingWhitespaces()
@@ -143,9 +116,6 @@ let g:ctrlp_working_path_mode = 'a'
 let g:syntastic_phpcs_conf = "--standard=CakePHP"
 map <Leader>sc :SyntasticCheck<cr>
 
-" vim-pep8 all the time, otherwise it's F6
-" au BufEnter,Bufread *.py call Pep8()
-
 " don't show the complete menu preview, default is completeopt=menu,preview
 set completeopt=menu
 
@@ -158,31 +128,9 @@ au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType xml set omnifunc=xmlcomplete#CompleteTags
 au FileType vim set omnifunc=syntaxcomplete#Complete
 
-" cakephp 
-" au BufEnter,BufRead {controllers,models,views,plugins,lib}/* set ft=php.cakephp
-" au BufEnter,BufRead {Controller,Model,View,Plugin,Lib}/* set ft=php.cakephp
-
 " markdown
 au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal ft=markdown
 au FileType markdown setl spell tw=100
-
-" PHP parser check (CTRL-L)
-":autocmd FileType php noremap <C-L> :!php -l %<CR>
-"map <Leader>w :w\| !php -l %<CR>
-
-
-" recursive search for word under cursor
-" silent!grep -R chronon *
-" vimgrep /chronon/gj ** | cw
-" Ack chronon
-map <Leader>g :noautocmd execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
-
-" turn off search highlighting
-map <silent> <leader>nh :nohls <CR>
-
-" turn off php long line highlighting 
-"map <leader>nhl :hi Search guibg=NONE guifg=NONE\| :hi ErrorMsg guibg=NONE guifg=NONE<CR>
-map <leader>nhl :hi ErrorMsg guibg=NONE guifg=NONE<CR>
 
 " manually trim all trailing whitespace
 map <Leader>tws :%s/\s\+$//<CR>
@@ -193,15 +141,11 @@ map <Leader>fxml :%s/></>\r</g <CR> gg=G
 " ctrl space for omnicomplete
 imap <C-Space> <C-x><C-o>
 
-map <Leader>ibd <ins><CR><esc>
-
 " php doc
 map <Leader>pd :call PhpDoc()<CR>
 
 " Tagbar
 let g:tagbar_autofocus = 1
-" nmap <Leader>, :set co=140 <CR> :TagbarOpen<CR>
-" nmap <Leader>. :set co=120 <CR> :TagbarClose<CR>
 nmap <Leader>, :TagbarOpen<CR>
 nmap <Leader>. :TagbarClose<CR>
 
@@ -214,8 +158,6 @@ if filereadable($VIRTUAL_ENV . '/.vimrc')
     source $VIRTUAL_ENV/.vimrc
 endif
 
-"let python_highlight_all = 1
-
 " functions
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
@@ -224,24 +166,12 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-" preview reStructuredText with :Rst
-" :command Rst :silent !rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
-
+let mapleader = ","
 let loaded_matchparen = 1
 let g:Powerline_symbols = 'unicode'
 " let g:Powerline_symbols = 'fancy'
 
-au BufRead,BufNewFile *.php inoremap <buffer> <C-P> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php nnoremap <buffer> <C-P> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
-
-" compile scss/jekyll sites if the _bin/build script exists on .scss save
-" function! BuildSite()
-" 	if filereadable("_bin/build")
-" 		silent !_bin/build
-" 	endif
-" endfunction
-" 	
-" au BufWritePost *.scss call BuildSite()
 
 " ack -al 'pattern' | xargs perl -pi -E 's/pattern/replacement/g'
