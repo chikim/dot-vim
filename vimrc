@@ -19,6 +19,7 @@ Bundle 'tpope/vim-sensible'
 Bundle 'edsono/vim-matchit'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'sjl/gundo.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
 Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Bundle 'editorconfig/editorconfig-vim'
@@ -108,12 +109,7 @@ let g:ctrlp_open_new_file = 't'
 let g:ctrlp_working_path_mode = 'a'
 
 " syntastic
-" let g:syntastic_auto_jump = 1
-" let g:syntastic_mode_map = { 'mode': 'passive',
-" 							\'active_filetypes': [],
-" 						    \'passive_filetypes': [] }
-" 
-let g:syntastic_phpcs_conf = "--standard=CakePHP"
+let g:syntastic_php_phpcs_args='--report=csv --standard=CakePHP'
 map <Leader>sc :SyntasticCheck<cr>
 
 " don't show the complete menu preview, default is completeopt=menu,preview
@@ -152,6 +148,9 @@ nmap <Leader>. :TagbarClose<CR>
 " move visual selected blocks more then once
 vnoremap < <gv
 vnoremap > >gv
+
+"Gundo.vim
+nnoremap <F6> :GundoToggle<CR>
 
 " omni-completion in a virtualenv for django
 if filereadable($VIRTUAL_ENV . '/.vimrc')
