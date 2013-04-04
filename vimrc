@@ -23,6 +23,7 @@ Bundle 'sjl/gundo.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
 Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Bundle 'editorconfig/editorconfig-vim'
+" Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 
